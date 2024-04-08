@@ -1,0 +1,22 @@
+hi..
+create new file..
+const fs = require('fs');
+const data = require('../../data.json');
+
+const TPL_FILE = './.github/tpl.md';
+const TARGET = './README.md';
+
+const tpl = getTemplate(TPL_FILE);
+
+const categories = {};
+
+data.repositories.sort((a, b) => {
+    const nameA = a.name.toUpperCase();
+    const nameB = b.name.toUpperCase();
+    if (nameA < nameB) {
+        return -1;
+    }
+    if (nameA > nameB) {
+        return 1;
+    }
+    return 0;
